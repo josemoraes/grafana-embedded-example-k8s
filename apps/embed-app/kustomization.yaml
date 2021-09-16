@@ -1,0 +1,14 @@
+commonLabels:
+  app: embed-app
+resources:
+- pod.yaml
+- service.yaml
+
+configMapGenerator:
+- name: embed-app-public
+  files:
+  - index.html
+
+images:
+- name: nginx
+  newName: nginx

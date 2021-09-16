@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: grafana-pod
+spec:
+  containers:
+  - name: grafana-container
+    image: grafana
+    ports:
+    - containerPort: 3000
+    volumeMounts:
+    - name: grafana-custom-config
+      mountPath: /etc/grafana/
+  - name: grafana-auth-proxy-container
+    image: nginx
+    ports:
+    - containerPort: 80
+    volumeMounts:
+    - name: grafana-proxy-custom-config
+      mountPath: /etc/nginx/
+  volumes:
+  - name: grafana-custom-config
+    configMap:
+      name: grafana-custom-config
+  - name: grafana-proxy-custom-config
+    configMap:
+      name: grafana-proxy-custom-config

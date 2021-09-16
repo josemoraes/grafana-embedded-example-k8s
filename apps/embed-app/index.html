@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Render Grafana on Iframe</title>
+</head>
+<link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+<body class="w-full h-full bg-blue-500 p-12">
+    <header class="flex items-baseline flex-col">
+        <h1 class="text-white text-5xl">Let's render grafana here.</h1>
+        <a href="http://localhost/grafana/?username=mson" target="_blank" class="border border-2 font-bold text-white px-5 py-2 border-white rounded mt-5 hover:bg-white hover:text-black transition-all duration-150">open in a tab</a>
+    </header>
+    <section class="mt-5 w-full h-screen bg-gray-100">
+        <iframe id="grafana-dashboard" width="100%" height="100%" src="http://localhost/grafana/?refresh=30s&theme=dark&username=mson"></iframe>
+    </section>
+</body>
+</html>

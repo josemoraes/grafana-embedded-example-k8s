@@ -1,0 +1,21 @@
+commonLabels:
+  app: grafana
+resources:
+- pod.yaml
+- service.yaml
+
+configMapGenerator:
+- name: grafana-custom-config
+  files:
+  - grafana.ini
+- name: grafana-proxy-custom-config
+  files:
+  - nginx.conf
+
+images:
+- name: grafana
+  newName: grafana/grafana
+  newTag: 8.0.0-ubuntu
+- name: nginx
+  newName: nginx
+  newTag: alpine
